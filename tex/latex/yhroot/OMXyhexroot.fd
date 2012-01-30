@@ -1,0 +1,11 @@
+\ProvidesFile{OMXyhexroot.fd}
+   [2012/01/25 v1.0 definition file of yhroot (yhmath's root-symbols)
+   by Yuwsuke KIEDA]
+
+\DeclareFontFamily{OMX}{yhexroot}{}{}
+\DeclareFontShape{OMX}{yhexroot}{m}{n}{
+   <-> sfixed * yhcmexroot10
+   }{}
+\endinput
+%%
+%% End of file `OMXyhexroot.fd'.
