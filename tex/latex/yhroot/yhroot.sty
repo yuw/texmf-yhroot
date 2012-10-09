@@ -1,9 +1,21 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{yhroot}
-   [2012/01/25 v1.0 yhroot (yhmath's root-symbols)
+   [2012/10/09 v1.1 yhroot (yhmath's root-symbols)
    by Yuwsuke KIEDA]
 
-\DeclareSymbolFont{largesymbols}{OMX}{yhexroot}{m}{n}
+\DeclareSymbolFont{yh@largessymbols}{OMX}{yhex}{m}{n}
+\DeclareMathRadical{\yh@sqrtsign}{symbols}{"70}{yh@largessymbols}{"70}
+\DeclareRobustCommand\sqrt{\@ifnextchar[\yh@sqrt\yh@sqrtsign}
+\def\yh@sqrt[#1]{\root #1\of}
+\def\root#1\of{%
+  \setbox\rootbox\hbox{$\m@th\scriptscriptstyle{#1}$}%
+  \mathpalette\yh@r@@t}
+\def\yh@r@@t#1#2{%
+  \setbox\z@\hbox{$\m@th#1\yh@sqrtsign{#2}$}%
+  \dimen@\ht\z@ \advance\dimen@-\dp\z@
+  \mkern5mu\raise.6\dimen@\copy\rootbox
+  \mkern-10mu\box\z@}
+
 \endinput
 %%
 %% End of file `yhroot.sty'.
